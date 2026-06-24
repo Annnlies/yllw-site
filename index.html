@@ -693,7 +693,7 @@ void main(){
   /* eased response: soft start, grows with movement, never snaps */
   vec2 disp = flow * (0.022 + 0.034 * smoothstep(0.0, 0.45, mag));
   /* always-on micro-parallax: the silk leans gently toward the cursor */
-  disp += (uPtr - 0.5) * vec2(0.011, -0.011);
+  disp += (uPtr - 0.5) * vec2(0.018, -0.018);
 
   /* cover-fit video */
   vec2 vuv = uv - 0.5;
@@ -830,7 +830,7 @@ function frame(){
   const q = Math.round(prSm*10)/10;
   if (video.readyState >= 2 && Math.abs(q - video.playbackRate) >= 0.1) video.playbackRate = q;
 
-  let ivx = velX*8.0, ivy = velY*8.0;            // injection gain
+  let ivx = 0.0, ivy = 0.0;                      // localized splat disabled: no visible cursor blob
   const im = Math.hypot(ivx,ivy);
   if (im > 0.6){ ivx *= 0.6/im; ivy *= 0.6/im; } // clamp splat strength
 
