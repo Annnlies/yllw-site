@@ -691,7 +691,7 @@ void main(){
   vec2 flow = dec(texture2D(uFlow, uv));
   float mag = length(flow);
   /* eased response: soft start, grows with movement, never snaps */
-  vec2 disp = flow * (0.03 + 0.075 * smoothstep(0.0, 0.45, mag));
+  vec2 disp = flow * (0.022 + 0.034 * smoothstep(0.0, 0.45, mag));
   /* always-on micro-parallax: the silk leans gently toward the cursor */
   disp += (uPtr - 0.5) * vec2(0.011, -0.011);
 
@@ -830,9 +830,9 @@ function frame(){
   const q = Math.round(prSm*10)/10;
   if (video.readyState >= 2 && Math.abs(q - video.playbackRate) >= 0.1) video.playbackRate = q;
 
-  let ivx = velX*13.0, ivy = velY*13.0;          // injection gain
+  let ivx = velX*8.0, ivy = velY*8.0;            // injection gain
   const im = Math.hypot(ivx,ivy);
-  if (im > 0.9){ ivx *= 0.9/im; ivy *= 0.9/im; } // clamp splat strength
+  if (im > 0.6){ ivx *= 0.6/im; ivy *= 0.6/im; } // clamp splat strength
 
   /* upload current video frame */
   if (video.readyState >= 2){
