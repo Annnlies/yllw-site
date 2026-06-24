@@ -894,8 +894,14 @@ document.addEventListener('visibilitychange', () => {
   }
 });
 
-/* some browsers need a nudge to start a muted autoplay video */
-document.addEventListener('click', () => { if(video.paused) video.play(); }, {once:true});
+/* autoplay can be unreliable over the network, so start the muted video
+   explicitly and retry it once data arrives or on the first interaction */
+function kick(){ if (video.paused) video.play().catch(()=>{}); }
+kick();
+video.addEventListener('loadeddata', kick, {once:true});
+video.addEventListener('canplay', kick, {once:true});
+['pointerdown','pointermove','touchstart','scroll','keydown'].forEach(ev =>
+  document.addEventListener(ev, kick, {once:true, passive:true}));
 })();
 </script>
 </body>
