@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knowledge · yllw</title>
+<meta name="description" content="Everything yllw knows, in the open: real opinions, how we work, the tools we use, and the systems we sell for lunch money.">
+<meta property="og:title" content="Knowledge · yllw">
+<meta property="og:description" content="Real opinions, how we work, the tools we trust, and the systems we sell for lunch money. No gatekeeping.">
+<meta property="og:image" content="https://www.yllwmrktng.com/yllw-fabric-still.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;1,400&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#121212;--off:#ECEAE4;--yllw:#EDF46C;--muted:#7A7468;--display:'Gloock',serif;--body:'Hanken Grotesk',sans-serif;--mono:'Space Mono',monospace;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--off);color:var(--ink);font-family:var(--body);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;}
+::selection{background:var(--yllw);color:var(--ink);}
+a{color:inherit;text-decoration:none;}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 6vw;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(236,234,228,0.35);}
+nav .logo{font-weight:500;font-size:20px;}
+nav .cta{font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;background:var(--ink);color:var(--yllw);padding:10px 18px;}
+nav .cta:hover{background:var(--yllw);color:var(--ink);}
+.wrap{max-width:1100px;margin:0 auto;padding:0 6vw;}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);}
+h1{font-family:var(--display);font-weight:400;line-height:1.05;letter-spacing:-0.01em;font-size:clamp(40px,6vw,72px);margin:18px 0 20px;}
+.intro{font-size:17px;color:#34312B;max-width:54ch;}
+.page-head{padding:170px 0 50px;}
+#ksearch{width:100%;max-width:640px;font-family:var(--body);font-size:17px;font-weight:400;padding:18px 20px;border:1px solid var(--ink);background:#F4F2EC;color:var(--ink);outline:none;border-radius:0;margin-top:30px;}
+#ksearch:focus{background:#FFFFFF;}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 0;}
+.filters button{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;padding:8px 16px;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;border-radius:0;transition:background .15s,color .15s;}
+.filters button:hover{background:rgba(237,244,108,0.5);}
+.filters button.on{background:var(--ink);color:var(--yllw);}
+.index{padding:50px 0 110px;}
+.index-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:50px;align-items:start;}
+.krow{display:block;border-top:1px solid var(--ink);padding:20px 0;}
+a.krow:hover .t{background:var(--yllw);}
+.krow .t{font-weight:500;font-size:clamp(15px,1.8vw,18px);}
+.krow .m{float:right;font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-left:14px;}
+.krow .m .chip{background:var(--yllw);color:var(--ink);padding:2px 8px;}
+.krow.soon{opacity:0.55;}
+#rows{border-bottom:1px solid var(--ink);}
+#kempty{display:none;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:26px 0;font-size:15px;color:#34312B;}
+#kempty a{border-bottom:1px solid var(--ink);padding-bottom:2px;}
+#kempty a:hover{background:var(--yllw);}
+.preview{position:sticky;top:120px;background:rgba(237,244,108,0.3);padding:24px;font-size:14px;line-height:1.65;color:#3F3C34;}
+.preview .ptag{font-family:var(--mono);font-size:9px;letter-spacing:0.12em;color:#5A5D20;display:block;margin-bottom:12px;}
+.waitlist{margin-top:30px;font-family:var(--mono);font-size:11px;letter-spacing:0.06em;color:var(--muted);}
+.waitlist a{border-bottom:1px solid var(--ink);padding-bottom:2px;}
+.waitlist a:hover{background:var(--yllw);}
+@media(max-width:900px){.index-grid{grid-template-columns:1fr;}.preview{display:none;}}
+@media(max-width:700px){.krow .m{float:none;display:block;margin:6px 0 0;}}
+footer{background:var(--yllw);color:#5A5D20;border-top:1px solid var(--ink);padding:20px 6vw 30px;display:flex;justify-content:space-between;gap:14px;font-family:var(--mono);font-size:10px;letter-spacing:0.1em;}
+@media(max-width:700px){footer{flex-direction:column;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="index.html">yllw</a>
+  <a class="cta" href="https://calendly.com/annelies-yllwmrktng/30min">Book 30 minutes</a>
+</nav>
+
+<div class="page-head">
+  <div class="wrap">
+    <p class="label">Knowledge</p>
+    <h1>Everything we know, in the open.</h1>
+    <p class="intro">Real opinions, how we work, the tools we trust, and the systems we sell for lunch money. Use it with us or without us. No gatekeeping either way.</p>
+    <input id="ksearch" type="text" placeholder="What are you trying to fix?" aria-label="Search the knowledge index">
+    <div class="filters" id="flt">
+      <button class="on" data-c="all">ALL</button>
+      <button data-c="opinions">OPINIONS</button>
+      <button data-c="how">HOW WE WORK</button>
+      <button data-c="tools">TOOLS</button>
+      <button data-c="templates">TEMPLATES</button>
+    </div>
+  </div>
+</div>
+
+<div class="index">
+  <div class="wrap index-grid">
+    <div>
+      <div id="rows">
+        <a class="krow" href="note-brand-voice.html" data-c="opinions" data-k="voice brand tone generic sound never-list horoscope"
+           data-p="Swap your logo for a competitor's and read the document again. If it still works, you don't have a voice document, you have a horoscope.">
+          <span class="m">001 · OPINIONS · 4 MIN</span><span class="t">Your brand voice is not a tone-of-voice document</span>
+        </a>
+        <a class="krow" href="note-audit-weeks.html" data-c="how" data-k="audit weeks process diagnose leak numbers list guarantee"
+           data-p="There is always a gap between what the company says it does and what actually ships. The size of that gap is most of the diagnosis.">
+          <span class="m">002 · HOW WE WORK · 5 MIN</span><span class="t">What a marketing audit looks like, week by week</span>
+        </a>
+        <a class="krow" href="note-tools-2026.html" data-c="tools" data-k="tools stack ai claude notion software scheduler seo"
+           data-p="A tool has to remove generic work, or it goes. Process that exists for its own sake is noise, and you know how we feel about noise.">
+          <span class="m">003 · TOOLS · 3 MIN</span><span class="t">The tools we actually use, summer 2026</span>
+        </a>
+        <a class="krow" href="mailto:annelies@yllwmrktng.com?subject=Early access: Notion content system" data-c="templates" data-k="notion planning content system calendar template recycle board"
+           data-p="Our full Notion structure for planning, producing and recycling content. The exact setup we run client work in. Leave your email for early access, you get a note from Annelies, not a robot.">
+          <span class="m"><span class="chip">EARLY ACCESS</span></span><span class="t">The yllw content system (Notion)</span>
+        </a>
+        <div class="krow soon" data-c="templates" data-k="prompts prompt list ai client work"
+           data-p="The short list of prompts we actually reuse, with notes on when each one fails. On the waitlist shelf, shipping soon.">
+          <span class="m">SOON</span><span class="t">The prompt list that survived client work</span>
+        </div>
+        <div class="krow soon" data-c="templates" data-k="audit checklist diy self"
+           data-p="The checklist behind our marketing audit. Run it yourself first. If you get stuck, you know where we are.">
+          <span class="m">SOON</span><span class="t">The audit checklist</span>
+        </div>
+      </div>
+      <p id="kempty">Nothing written about that yet. <a href="https://calendly.com/annelies-yllwmrktng/30min">Book 30 minutes</a> and ask us directly, that's faster anyway.</p>
+      <p class="waitlist"><a href="mailto:annelies@yllwmrktng.com?subject=Waitlist: templates">Leave your email</a> and get new templates the day they ship. First 50 get the launch price.</p>
+    </div>
+    <div class="preview" id="prev">
+      <span class="ptag">PREVIEW · 001</span>
+      Swap your logo for a competitor's and read the document again. If it still works, you don't have a voice document, you have a horoscope.
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© yllw 2026 / Built on what we sell.</span>
+  <span>Strategy and execution. Same hands.</span>
+</footer>
+
+<script>
+(() => {
+  const inp = document.getElementById('ksearch');
+  const btns = document.querySelectorAll('#flt button');
+  const rows = document.querySelectorAll('.krow');
+  const empty = document.getElementById('kempty');
+  const prev = document.getElementById('prev');
+  let cat = 'all';
+
+  /* rotating placeholder, pauses while the field is in use */
+  const ph = ['What are you trying to fix?','our brand voice sounds generic...','the team drowns in social production...','which AI tools are worth it...','our content calendar is always empty...'];
+  let pi = 0;
+  setInterval(() => {
+    if (document.activeElement !== inp && !inp.value){ pi = (pi+1)%ph.length; inp.placeholder = ph[pi]; }
+  }, 2800);
+
+  function apply(){
+    const q = inp.value.toLowerCase().trim();
+    let hits = 0;
+    rows.forEach(r => {
+      const okCat = cat === 'all' || r.dataset.c === cat;
+      const okQ = !q || r.dataset.k.includes(q) || r.textContent.toLowerCase().includes(q);
+      const show = okCat && okQ;
+      r.style.display = show ? 'block' : 'none';
+      if (show) hits++;
+    });
+    empty.style.display = hits ? 'none' : 'block';
+  }
+
+  btns.forEach(b => b.addEventListener('click', () => {
+    btns.forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    cat = b.dataset.c;
+    apply();
+  }));
+  inp.addEventListener('input', apply);
+
+  rows.forEach(r => r.addEventListener('mouseenter', () => {
+    prev.innerHTML = '<span class="ptag">PREVIEW</span>' + r.dataset.p;
+  }));
+})();
+</script>
+</body>
+</html>
