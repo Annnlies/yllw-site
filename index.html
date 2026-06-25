@@ -37,6 +37,26 @@ nav .cta{background:var(--ink);color:var(--yllw);padding:10px 18px;opacity:1 !im
 nav .cta:hover{background:var(--yllw);color:var(--ink);}
 @media(max-width:900px){nav .links a:not(.cta){display:none;}}
 
+/* hamburger toggle */
+nav .menu-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px;width:30px;height:30px;background:transparent;border:none;cursor:pointer;padding:0;margin-left:4px;}
+nav .menu-toggle span{display:block;height:1.5px;background:var(--ink);transition:opacity .2s;}
+nav .menu-toggle span:nth-child(1){width:24px;}
+nav .menu-toggle span:nth-child(2){width:17px;margin-left:auto;}
+nav .menu-toggle:hover span{opacity:0.6;}
+
+/* full-screen section menu */
+.menu-overlay{position:fixed;inset:0;z-index:60;background:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:9vh 8vw;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s;}
+.menu-overlay.open{opacity:1;visibility:visible;}
+.menu-overlay .mlabel{font-family:var(--mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#8A8782;margin-bottom:24px;}
+.menu-close{position:absolute;top:18px;right:6vw;width:42px;height:42px;background:transparent;border:none;color:var(--off);font-size:34px;line-height:1;cursor:pointer;font-family:var(--body);}
+.menu-close:hover{color:var(--yllw);}
+.menu-list{display:flex;flex-direction:column;gap:4px;align-items:flex-start;}
+.menu-list a{font-family:var(--display);font-weight:400;font-size:clamp(24px,4vw,46px);line-height:1.14;color:var(--off);transition:color .2s;}
+.menu-list a:hover{color:var(--yllw);}
+.menu-list .menu-cta{margin-top:26px;font-family:var(--mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);background:var(--yllw);padding:14px 22px;line-height:1;}
+.menu-list .menu-cta:hover{color:var(--ink);background:#fff;}
+@media(max-width:700px){.menu-list a{font-size:clamp(23px,7vw,38px);}.menu-overlay{padding:11vh 8vw;}}
+
 header{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:#ECEAE4 url(yllw-fabric-still.jpg) center/cover no-repeat;}
 #fabric{position:absolute;inset:0;width:100%;height:100%;display:block;}
 /* fallback video layer (used when WebGL can't read local video) */
@@ -73,7 +93,7 @@ header .meta-row{position:relative;display:flex;justify-content:space-between;ga
 
 /* ---------- below the hero: paper & silk ---------- */
 html{scroll-behavior:smooth;}
-section{padding:120px 6vw;}
+section{padding:120px 6vw;scroll-margin-top:84px;}
 
 /* ink bands: full-bleed statement planes */
 .band-ink{background:var(--ink);color:var(--off);}
@@ -248,8 +268,26 @@ footer .strip{max-width:1200px;margin:0 auto;border-top:1px solid rgba(18,18,18,
   <div class="links">
     <a href="#work">Work</a><a href="#network">Network</a><a href="knowledge.html">Knowledge</a>
     <a class="cta" href="https://calendly.com/annelies-yllwmrktng/30min">Let's talk</a>
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   </div>
 </nav>
+
+<div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+  <button class="menu-close" aria-label="Close menu">&times;</button>
+  <p class="mlabel">Index</p>
+  <nav class="menu-list">
+    <a href="#believe">What we believe</a>
+    <a href="#work">How we help</a>
+    <a href="#references">References</a>
+    <a href="#network">The Network</a>
+    <a href="#notes">Notes</a>
+    <a href="#shop">Templates</a>
+    <a href="#about">The founder</a>
+    <a href="#faq">Questions</a>
+    <a href="knowledge.html">Knowledge</a>
+    <a class="menu-cta" href="https://calendly.com/annelies-yllwmrktng/30min">Book 30 minutes →</a>
+  </nav>
+</div>
 
 <header>
   <video id="vid" src="yllw-fabric-loop.mp4" poster="yllw-fabric-still.jpg" autoplay muted loop playsinline preload="auto"></video>
@@ -903,6 +941,22 @@ video.addEventListener('loadeddata', kick, {once:true});
 video.addEventListener('canplay', kick, {once:true});
 ['pointerdown','pointermove','touchstart','scroll','keydown'].forEach(ev =>
   document.addEventListener(ev, kick, {once:true, passive:true}));
+})();
+</script>
+
+<script>
+/* full-screen section menu */
+(() => {
+  const toggle = document.querySelector('.menu-toggle');
+  const overlay = document.getElementById('menuOverlay');
+  if (!toggle || !overlay) return;
+  const closeBtn = overlay.querySelector('.menu-close');
+  const open = () => { overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false'); toggle.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; };
+  const close = () => { overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true'); toggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; };
+  toggle.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('open')) close(); });
 })();
 </script>
 </body>
