@@ -955,7 +955,17 @@ video.addEventListener('canplay', kick, {once:true});
   const close = () => { overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true'); toggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; };
   toggle.addEventListener('click', open);
   closeBtn.addEventListener('click', close);
-  overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href && href.charAt(0) === '#') {
+      e.preventDefault();
+      close();
+      const target = document.querySelector(href);
+      if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 60);
+    } else {
+      close();
+    }
+  }));
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('open')) close(); });
 })();
 </script>
